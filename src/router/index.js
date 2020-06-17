@@ -1,13 +1,13 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { Home } from './assembly'
+import { Order } from './assembly'
 
 export default class Router extends React.Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path="/" component={Home} />
+          <Route path="/" component={Order} />
         </Switch>
       </BrowserRouter>
     )

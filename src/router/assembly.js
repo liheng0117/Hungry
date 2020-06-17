@@ -1,5 +1,5 @@
 import Loadable from '../components/Loadable'
 
-const Home = Loadable(() => import('../pages/home'))
+const Order = Loadable(() => import('@/pages/order'))
 
-export { Home }
+export { Order }
