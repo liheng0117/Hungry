@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getCaptcha } from '@/actions/login'
+import { changePwd } from '@/actions/forget'
 import { Form, Input, Button, message } from 'antd'
 import { LoginHeader } from '@@'
 import './style.less'
@@ -11,10 +12,10 @@ export default connect(
       captcha: state.login.captcha,
     }
   },
-  { getCaptcha }
+  { getCaptcha, changePwd }
 )(Forget)
 function Forget(props) {
-  const { getCaptcha, captcha, getUser } = props
+  const { getCaptcha, captcha, changePwd } = props
   useEffect(() => {
     getCaptcha()
   }, [])
@@ -23,7 +24,8 @@ function Forget(props) {
     getCaptcha()
   }
   async function onFinish(values) {
-    console.log(values)
+    const res = await changePwd(values)
+    message.info(res.payload.message)
   }
   return (
     <div className="forget">
@@ -32,13 +34,13 @@ function Forget(props) {
         <Form.Item name="username">
           <Input placeholder="账号" />
         </Form.Item>
-        <Form.Item name="oldPassword">
+        <Form.Item name="oldpassword">
           <Input placeholder="旧密码" />
         </Form.Item>
-        <Form.Item name="username">
+        <Form.Item name="newpassword">
           <Input placeholder="请输入新密码" />
         </Form.Item>
-        <Form.Item name="username">
+        <Form.Item name="confirmpassword">
           <Input placeholder="请确认密码" />
         </Form.Item>
         <Form.Item>
