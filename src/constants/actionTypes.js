@@ -1,2 +1,3 @@
 // home
-export const FETCH_HOME_NAME = 'FETCH_HOME_NAME'
+export const FETCH_LOGIN_USER = 'FETCH_LOGIN_USER'
+export const FETCH_LOGIN_CAPTCHA = 'FETCH_LOGIN_CAPTCHA'
