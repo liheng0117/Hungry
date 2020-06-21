@@ -1,3 +1,4 @@
 import LoginHeader from './LoginHeader'
+import FoodNav from './FoodNav'
 
-export { LoginHeader }
+export { LoginHeader, FoodNav }
