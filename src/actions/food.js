@@ -1,9 +1,5 @@
-import {
-  FETCH_FOOD_LIST
-} from '@/constants/actionTypes'
-import {
-  get
-} from '@/utils/request'
+import { FETCH_FOOD_LIST } from '@/constants/actionTypes'
+import { get } from '@/utils/request'
 import api from '@/services/api'
 
 export function getFoodList(options) {
