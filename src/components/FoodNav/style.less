@@ -1,8 +1,69 @@
-.food-nav{
+.food-nav {
   width: 100%;
-  height: 0.8rem;
-  background-color: palegreen;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  position: relative;
+
+  .nav {
+    width: 100%;
+    height: 0.8rem;
+    display: flex;
+    border-bottom: 1px solid #f0f0f0;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 999;
+    position: relative;
+    background-color: white;
+
+    .sanjiao {
+      overflow: hidden;
+    }
+
+    .sanjiao:after {
+      content: '';
+      width: 0px;
+      height: 0px;
+      overflow: hidden;
+      border: 5px #AAA solid;
+      border-color: #AAA transparent transparent transparent;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 0 0 5px;
+    }
+  }
+
+  .nav-bg {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    left: 0;
+    top: 1.6rem;
+  }
+
+  .nav-sort {
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 0.8rem;
+    transition: all 0.4s ease 0s;
+
+    p {
+      padding: 0.2rem;
+      border-bottom: 1px solid #f0f0f0;
+
+      span {
+        display: inline-block;
+        width: 0.5rem;
+        text-align: center;
+      }
+    }
+  }
+
+  .nav-sort-show {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -4rem;
+  }
+
 }
