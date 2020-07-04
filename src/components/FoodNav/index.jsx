@@ -1,62 +1,30 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
-import { getFoodList } from '@/actions/food'
-import { createFromIconfontCN } from '@ant-design/icons'
+import Sort from './sort'
+import Filter from './filter'
 import './style.less'
 
-const MyIcon = createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_1776886_ptbgvlboqif.js', // 在 iconfont.cn 上生成
-})
-export default connect(
-  () => {
-    return {}
-  },
-  {
-    getFoodList,
-  }
-)(FoodNav)
-function FoodNav(props) {
+export default function FoodNav(props) {
   const [sortShow, setSortShow] = useState(true)
-  const [bgShow, setBgShow] = useState(true)
+  const [sortBgShow, setSortBgShow] = useState(true)
+  const [filterShow, setFilterShow] = useState(true)
+  const [filterBgShow, setFilterBgShow] = useState(true)
+  // 点击排序按钮
   function sortFn() {
-    setBgShow(!bgShow)
+    setSortBgShow(!sortBgShow)
     setSortShow(!sortShow)
+    setFilterBgShow(true)
+    setFilterShow(true)
   }
-  //  智能排序
-  function oderDefault() {
-    props.getFoodList(0)
-    setBgShow(true)
-    setSortShow(true)
+  function sortFnBack(bool) {
+    setSortBgShow(bool)
+    setSortShow(bool)
   }
-  // 距离最近
-  function oderDistance() {
-    props.getFoodList(5)
-    setBgShow(true)
+  // 点击筛选按钮
+  function filterFn() {
+    setSortBgShow(true)
     setSortShow(true)
-  }
-  // 销量排序
-  function oderSales() {
-    props.getFoodList(6)
-    setBgShow(true)
-    setSortShow(true)
-  }
-  // 起送价最低
-  function oderDelivery() {
-    props.getFoodList(1)
-    setBgShow(true)
-    setSortShow(true)
-  }
-  // 配送速度最快
-  function oderSpeed() {
-    props.getFoodList(2)
-    setBgShow(true)
-    setSortShow(true)
-  }
-  // 评分最高
-  function oderScore() {
-    props.getFoodList(3)
-    setBgShow(true)
-    setSortShow(true)
+    setFilterBgShow(!filterBgShow)
+    setFilterShow(!filterShow)
   }
   return (
     <div className="food-nav">
@@ -67,52 +35,16 @@ function FoodNav(props) {
         <div onClick={sortFn}>
           排序<span className="sanjiao"></span>
         </div>
-        <div>
+        <div onClick={filterFn}>
           筛选<span className="sanjiao"></span>
         </div>
       </div>
-      <div
-        className="nav-bg"
-        style={{ display: bgShow ? 'none' : 'block' }}
-      ></div>
-      <div className={sortShow ? 'nav-sort-show' : 'nav-sort'}>
-        <p onClick={oderDefault}>
-          <span>
-            <MyIcon type="iconrestaurant--fine" />
-          </span>{' '}
-          智能排序
-        </p>
-        <p onClick={oderDistance}>
-          <span>
-            <MyIcon type="iconarrival" />
-          </span>{' '}
-          距离最近
-        </p>
-        <p onClick={oderSales}>
-          <span>
-            <MyIcon type="iconaixin" />
-          </span>{' '}
-          销量最高
-        </p>
-        <p onClick={oderDelivery}>
-          <span>
-            <MyIcon type="iconicon-test1" />
-          </span>{' '}
-          起送价最低
-        </p>
-        <p onClick={oderSpeed}>
-          <span>
-            <MyIcon type="iconall" />
-          </span>{' '}
-          配速速度最快
-        </p>
-        <p onClick={oderScore}>
-          <span>
-            <MyIcon type="iconfavorite" />
-          </span>{' '}
-          评分最高
-        </p>
-      </div>
+      <Sort
+        sortShow={sortShow}
+        sortBgShow={sortBgShow}
+        sortFnBack={sortFnBack}
+      />
+      <Filter filterBgShow={filterBgShow} filterShow={filterShow} />
     </div>
   )
 }

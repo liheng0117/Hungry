@@ -67,4 +67,67 @@
     transition: all 0.4s ease 0s;
   }
 
+  .nav-filter {
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 0.8rem;
+    transition: all 0.4s ease 0s;
+
+    h1 {
+      padding: 0.2rem;
+    }
+
+    ul {
+      width: 100%;
+      display: flex;
+      padding: 0 0.2rem;
+      flex-wrap: wrap;
+
+      li {
+        width: 31%;
+        padding: 0.1rem 0;
+        margin: 1%;
+        text-align: center;
+        border: 1px solid #c5c5c5;
+        border-radius: 0.1rem;
+      }
+    }
+
+    .filter-foot {
+      background-color: #f1f1f1;
+      margin-top: 0.2rem;
+      padding: 0.2rem;
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        width: 49%;
+        border-radius: 0.1rem;
+        padding: 0.2rem 0;
+        border: none;
+        font-size: 0.3rem;
+      }
+
+      button:first-child {
+        background-color: white;
+        color: black;
+      }
+
+      button:last-child {
+        background-color: #56d176;
+        color: white;
+      }
+    }
+  }
+
+  .nav-filter-show {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: -4rem;
+    transition: all 0.4s ease 0s;
+  }
+
 }
